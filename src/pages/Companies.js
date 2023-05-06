@@ -17,7 +17,12 @@ function Companies() {
   return (
     <div>
       {' '}
-      <h1>Companies</h1>
+      {/*-------start company header----------*/}
+      <div className="">
+      <h2 className="text-center">Company </h2>
+      <div className="underline"></div>
+    </div>
+    {/*-------end company header----------*/}
       {comps.map((item) => (
         <h2 key={item._id}>{item.companyName}</h2>
       ))}
