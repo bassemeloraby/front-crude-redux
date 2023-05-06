@@ -5,7 +5,7 @@ const { getCompanies } = companiesService;
 
 export const getComps = createAsyncThunk('companies/getComps', getCompanies);
 
-const postSlice = createSlice({
+const companySlice = createSlice({
   name: 'companies',
   initialState: {
     posts: [],
@@ -26,4 +26,4 @@ const postSlice = createSlice({
   },
 });
 
-export default postSlice.reducer;
+export default companySlice.reducer;
