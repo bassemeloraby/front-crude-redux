@@ -3,7 +3,7 @@ import companiesService from './companiesService';
 
 const { getCompanies } = companiesService;
 
-export const getComps = createAsyncThunk('posts/getPosts', getCompanies);
+export const getComps = createAsyncThunk('companies/getComps', getCompanies);
 
 const postSlice = createSlice({
   name: 'companies',
