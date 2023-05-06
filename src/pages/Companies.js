@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getComps } from '../features/companiesReducer';
 
 function Companies() {
-  const { posts, loading } = useSelector((state) => state.company);
+  const { comps, loading } = useSelector((state) => state.company);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -18,7 +18,7 @@ function Companies() {
     <div>
       {' '}
       <h1>Companies</h1>
-      {posts.map((item) => (
+      {comps.map((item) => (
         <h2 key={item._id}>{item.companyName}</h2>
       ))}
     </div>

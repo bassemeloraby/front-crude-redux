@@ -8,7 +8,7 @@ export const getComps = createAsyncThunk('comps/getComps', getCompanies);
 const companySlice = createSlice({
   name: 'comps',
   initialState: {
-    posts: [],
+    comps: [],
     loading: false,
   },
   extraReducers: (builder) => {
@@ -18,7 +18,7 @@ const companySlice = createSlice({
       })
       .addCase(getComps.fulfilled, (state, action) => {
         state.loading = false;
-        state.posts = action.payload;
+        state.comps = action.payload;
       })
       .addCase(getComps.rejected, (state, action) => {
         state.loading = false;
