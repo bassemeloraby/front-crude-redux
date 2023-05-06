@@ -1,9 +1,13 @@
-import Users from './pages/Users';
+// import Users from './pages/Users';
+
+import Companies from './pages/Companies';
+
 
 function App() {
   return (
     <div className="App">
-      <Users />
+      {/*<Users />*/}
+      <Companies />
     </div>
   );
 }
