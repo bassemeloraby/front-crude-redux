@@ -1,10 +1,9 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import companiesService from './companiesService';
 
-export const getPosts = createAsyncThunk(
-  'posts/getPosts',
-  companiesService.getCompanies
-);
+const { getCompanies } = companiesService;
+
+export const getPosts = createAsyncThunk('posts/getPosts', getCompanies);
 
 const postSlice = createSlice({
   name: 'posts',
