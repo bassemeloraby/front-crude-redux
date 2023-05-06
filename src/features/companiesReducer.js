@@ -1,10 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import companiesService from './companiesService'
 
-export const getPosts = createAsyncThunk('posts/getPosts', async () => {
-  return fetch('https://sore-lime-goat-tam.cyclic.app/api/companies').then(
-    (res) => res.json()
-  );
-});
+export const getPosts = createAsyncThunk('posts/getPosts', companiesService.getCompanies);
 
 const postSlice = createSlice({
   name: 'posts',
