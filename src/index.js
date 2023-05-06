@@ -8,12 +8,12 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
 import usersReducer from './features/Users';
-import postReducer from './features/companiesReducer';
+import companyReducer from './features/companiesReducer';
 
 const store = configureStore({
   reducer: {
     users: usersReducer,
-    post: postReducer,
+    company: companyReducer,
   },
 });
 

@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getComps } from '../features/companiesReducer';
 
 function Companies() {
-  const { posts, loading } = useSelector((state) => state.post);
+  const { posts, loading } = useSelector((state) => state.company);
   const dispatch = useDispatch();
 
   useEffect(() => {

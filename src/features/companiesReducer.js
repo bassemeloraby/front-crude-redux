@@ -3,10 +3,10 @@ import companiesService from './companiesService';
 
 const { getCompanies } = companiesService;
 
-export const getComps = createAsyncThunk('companies/getComps', getCompanies);
+export const getComps = createAsyncThunk('comps/getComps', getCompanies);
 
 const companySlice = createSlice({
-  name: 'companies',
+  name: 'comps',
   initialState: {
     posts: [],
     loading: false,
