@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getPosts } from '../features/companiesReducer';
+import { getComps } from '../features/companiesReducer';
 
 function Companies() {
   const { posts, loading } = useSelector((state) => state.post);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getPosts());
+    dispatch(getComps());
   }, [dispatch]);
 
   if (loading) {

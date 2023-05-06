@@ -3,24 +3,24 @@ import companiesService from './companiesService';
 
 const { getCompanies } = companiesService;
 
-export const getPosts = createAsyncThunk('posts/getPosts', getCompanies);
+export const getComps = createAsyncThunk('posts/getPosts', getCompanies);
 
 const postSlice = createSlice({
-  name: 'posts',
+  name: 'companies',
   initialState: {
     posts: [],
     loading: false,
   },
   extraReducers: (builder) => {
     builder
-      .addCase(getPosts.pending, (state, action) => {
+      .addCase(getComps.pending, (state, action) => {
         state.loading = true;
       })
-      .addCase(getPosts.fulfilled, (state, action) => {
+      .addCase(getComps.fulfilled, (state, action) => {
         state.loading = false;
         state.posts = action.payload;
       })
-      .addCase(getPosts.rejected, (state, action) => {
+      .addCase(getComps.rejected, (state, action) => {
         state.loading = false;
       });
   },
