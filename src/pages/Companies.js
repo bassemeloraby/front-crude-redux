@@ -19,7 +19,7 @@ function Companies() {
       {' '}
       <h1>Companies</h1>
       {posts.map((item) => (
-        <h2>{item.companyName}</h2>
+        <h2 key={item._id}>{item.companyName}</h2>
       ))}
     </div>
   );
