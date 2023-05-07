@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import companiesService from './companiesService';
 
-const { getCompanies, createCompany } = companiesService;
+const { getCompanies, createCompany, deleteGoal } = companiesService;
 
 export const getComps = createAsyncThunk('comps/getComps', getCompanies);
 
@@ -11,6 +11,18 @@ export const createComp = createAsyncThunk(
   async (goalData, thunkAPI) => {
     try {
       return await createCompany(goalData);
+    } catch (error) {
+      return thunkAPI.rejectWithValue();
+    }
+  }
+);
+
+// Delete user goal
+export const deleteComp = createAsyncThunk(
+  'goals/delete',
+  async (id, thunkAPI) => {
+    try {
+      return await deleteGoal(id);
     } catch (error) {
       return thunkAPI.rejectWithValue();
     }
@@ -46,6 +58,19 @@ const companySlice = createSlice({
         state.loading = false;
         state.message = action.payload;
       })
+      .addCase(deleteComp.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(deleteComp.fulfilled, (state, action) => {
+        state.loading = false;
+        state.comps = state.comps.filter(
+          (goal) => goal._id !== action.payload.id
+        );
+      })
+      .addCase(deleteComp.rejected, (state, action) => {
+        state.loading = false;
+        state.message = action.payload;
+      });
   },
 });
 
