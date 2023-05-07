@@ -1,15 +1,24 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getComps } from '../features/companiesReducer';
+import { getComps, createComp } from '../features/companiesReducer';
 import Table from 'react-bootstrap/Table';
+import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/InputGroup';
 
 function Companies() {
+  const [companyName, setCompanyName] = React.useState('');
   const { comps, loading } = useSelector((state) => state.company);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getComps());
   }, [dispatch]);
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    dispatch(createComp({ companyName }));
+    setCompanyName('');
+  };
 
   if (loading) {
     return <h1>Loading...</h1>;
@@ -24,6 +33,26 @@ function Companies() {
         <div className="underline"></div>
       </div>
       {/*-------end company header----------*/}
+      {/*-------start company add----------*/}
+      <div className="Add-company">
+        <form onSubmit={onSubmit}>
+          <InputGroup className="mb-3">
+            <Form.Control
+              placeholder="Enter a company"
+              type="text"
+              name="text"
+              value={companyName}
+              autoFocus
+              autoComplete="off"
+              onChange={(e) => setCompanyName(e.target.value)}
+            />
+          </InputGroup>
+          <button className="btn btn-block" type="submit">
+            Add Goal
+          </button>
+        </form>
+      </div>
+      {/*-------end company add----------*/}
       {/*-------start company show-------*/}
       <section className="col">
         <Table striped bordered hover>
@@ -53,7 +82,6 @@ function Companies() {
         </Table>
       </section>
       {/*-------end company show-------*/}
- 
     </div>
   );
 }
