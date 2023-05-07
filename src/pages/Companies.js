@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getComps, createComp } from '../features/companiesReducer';
+import { getComps, createComp, deleteComp } from '../features/companiesReducer';
 import Table from 'react-bootstrap/Table';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
@@ -75,6 +75,14 @@ function Companies() {
                   >
                     {comp.companyName}
                   </a>
+                </td>
+                <td>
+                  <button
+                    onClick={() => dispatch(deleteComp(comp._id))}
+                    className="btn btn-block"
+                  >
+                    delete Goal
+                  </button>
                 </td>
               </tr>
             ))}
